@@ -14,11 +14,10 @@ data = xmltodict.parse(response.data)
 @app.route('/')
 def index():
     intervals = data.get("Document").get("DocBody").get("Energies").get("IntervalEnergy")
-    intervals_len = str(len(intervals))
-    for item in intervals:
-        if item.get("Interval") == intervals_len:
-            market_quant = item.get("MQ")
-            for mq in market_quant:
-                if mq.get("MarketQuantity") == "ONTARIO DEMAND":
-                    return mq.get("EnergyMW")
-    return("Not found")
+    demands = []
+    for interval in intervals:
+        market_quant = interval.get("MQ")
+        for mq in market_quant:
+            if mq.get("MarketQuantity") == "ONTARIO DEMAND":
+                demands.append(mq.get("EnergyMW"))
+    return(str(demands))
