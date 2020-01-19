@@ -8,13 +8,12 @@
 
 <body>
   <center>
-    <h1>Real Time <strike>Canada</strike> Ontario Energy Demand - Past Hour</h1>
-    <h2>(because we're the only province that matters)</h2>
+    <h1>Real Time Ontario Energy Consumption</h1>
   </center>
   <center>
-    <canvas id="myChart"></canvas>
+    <canvas id="myChart" style="max-width:80%"></canvas>
   </center>
-  <script>let consumption = {{consumption}};</script>
+  <script>let consumption = {{consumption|safe}}</script>
   <script src="{{ url_for('static', filename='js/mychart.js') }}"></script>
 </body>
 </html>

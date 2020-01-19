@@ -6,12 +6,34 @@ var chart = new Chart(ctx, {
     data: {
         labels: ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'],
         datasets: [{
-            label: 'Ontario Energy Demand',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
+            label: 'Energy Consumption (in MW)',
+            borderColor: 'rgb(78,128,204)',
             data: consumption
         }]
     },
     // Configuration options go here
-    options: {}
+    options: {
+        legend: {
+            display: true,
+            labels: {
+                fontColor: 'rgb(255, 99, 132)'
+            }
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    callback: function(value, index, values) {
+                        return value + ' MW';
+                    }
+                }
+            }],
+            xAxes: [{
+                ticks: {
+                    callback: function(value, index, values) {
+                        return new Date().getHours() + ':' + value;
+                    }
+                }
+            }]
+        }
+    }
 });
