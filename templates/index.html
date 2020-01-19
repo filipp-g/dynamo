@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Dynamo</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+
+<body>
+  <center>
+    <h1>Real Time <strike>Canada</strike> Ontario Energy Demand - Past Hour</h1>
+    <h2>(because we're the only province that matters)</h2>
+  </center>
+  <center>
+    <canvas id="myChart"></canvas>
+  </center>
+  <script>let consumption = {{consumption}};</script>
+  <script src="{{ url_for('static', filename='js/mychart.js') }}"></script>
+</body>
+</html>
